@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.crupp52.nachos.data.dao.FakeMovieDao
 import com.crupp52.nachos.data.model.Movie
 
-class FakeMovieRepository private constructor(private val movieDao: FakeMovieDao) {
+class MovieRepository private constructor(private val movieDao: FakeMovieDao) {
     fun add(movie: Movie){
         movieDao.add(movie)
     }
@@ -15,10 +15,10 @@ class FakeMovieRepository private constructor(private val movieDao: FakeMovieDao
 
     companion object {
         @Volatile
-        private var instance: FakeMovieRepository? = null
+        private var instance: MovieRepository? = null
 
         fun getInstance(movieDao: FakeMovieDao) = instance ?: synchronized(this) {
-            instance ?: FakeMovieRepository(movieDao).also { instance = it }
+            instance ?: MovieRepository(movieDao).also { instance = it }
         }
     }
 }

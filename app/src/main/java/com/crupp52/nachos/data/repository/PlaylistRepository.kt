@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.crupp52.nachos.data.dao.FakePlaylistDao
 import com.crupp52.nachos.data.model.Playlist
 
-class FakePlaylistRepository private constructor(private val playlistDao: FakePlaylistDao){
+class PlaylistRepository private constructor(private val playlistDao: FakePlaylistDao){
     fun add(playlist: Playlist){
         playlistDao.add(playlist)
     }
@@ -15,10 +15,10 @@ class FakePlaylistRepository private constructor(private val playlistDao: FakePl
 
     companion object {
         @Volatile
-        private var instance: FakePlaylistRepository? = null
+        private var instance: PlaylistRepository? = null
 
         fun getInstance(playlistDao: FakePlaylistDao) = instance ?: synchronized(this) {
-            instance ?: FakePlaylistRepository(playlistDao).also { instance = it }
+            instance ?: PlaylistRepository(playlistDao).also { instance = it }
         }
     }
 }
