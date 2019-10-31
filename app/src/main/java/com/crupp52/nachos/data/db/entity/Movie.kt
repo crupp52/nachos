@@ -1,5 +1,6 @@
-package com.crupp52.nachos.data.model
+package com.crupp52.nachos.data.db.entity
 
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Movie(
@@ -7,8 +8,11 @@ data class Movie(
     val adult: Boolean,
     @SerializedName("genres")
     val genres: List<Genre>,
+
+    @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     val id: Int,
+
     @SerializedName("original_language")
     val originalLanguage: String,
     @SerializedName("original_title")

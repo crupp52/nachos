@@ -1,7 +1,7 @@
 package com.crupp52.nachos.data.api
 
-import com.crupp52.nachos.data.model.Movie
-import com.crupp52.nachos.data.model.MovieCollectionResponse
+import com.crupp52.nachos.data.db.entity.Movie
+import com.crupp52.nachos.data.network.response.MovieCollectionResponse
 import com.crupp52.nachos.utils.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
