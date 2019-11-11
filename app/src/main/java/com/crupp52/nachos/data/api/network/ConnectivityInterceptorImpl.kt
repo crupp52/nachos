@@ -1,11 +1,10 @@
-package com.crupp52.nachos.data.network
+package com.crupp52.nachos.data.api.network
 
 import android.content.Context
 import android.net.ConnectivityManager
 import com.crupp52.nachos.internal.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.io.IOException
 
 class ConnectivityInterceptorImpl(context: Context) : ConnectivityInterceptor {
     private val appContext = context.applicationContext

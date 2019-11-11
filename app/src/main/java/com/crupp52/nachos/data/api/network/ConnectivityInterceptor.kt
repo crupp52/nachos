@@ -1,4 +1,4 @@
-package com.crupp52.nachos.data.network
+package com.crupp52.nachos.data.api.network
 
 import okhttp3.Interceptor
 

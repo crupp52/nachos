@@ -1,10 +1,10 @@
-package com.crupp52.nachos.data.network
+package com.crupp52.nachos.data.api.network
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.crupp52.nachos.data.api.TmdbApiService
-import com.crupp52.nachos.data.network.response.MovieCollectionResponse
+import com.crupp52.nachos.data.api.network.response.MovieCollectionResponse
 import com.crupp52.nachos.internal.NoConnectivityException
 
 class MovieNetworkDataSourceImpl(

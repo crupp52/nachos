@@ -8,24 +8,28 @@ import com.crupp52.nachos.data.db.entity.Movie
 
 @Database(
     entities = [Movie::class],
-    version = 1
+    version = 5
 )
 abstract class MovieDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
 
+    init {
+        movieDao().upsert(Movie(10,"asd", "2018"))
+    }
+
     companion object {
         @Volatile
-        private var instance: MovieDatabase? = null
-        private val LOCK = Any()
+        private var INSTANCE: MovieDatabase? = null
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: buidDatabase(context).also { instance = it }
+        fun getInstance(context: Context): MovieDatabase? {
+            if (INSTANCE == null) {
+                INSTANCE = Room.databaseBuilder<MovieDatabase>(
+                    context.applicationContext,
+                    MovieDatabase::class.java,
+                    "movie_db"
+                ).build()
+            }
+            return INSTANCE
         }
-
-        private fun buidDatabase(context: Context) = Room.databaseBuilder(
-            context.applicationContext,
-            MovieDatabase::class.java,
-            "movie.db"
-        ).build()
     }
 }
