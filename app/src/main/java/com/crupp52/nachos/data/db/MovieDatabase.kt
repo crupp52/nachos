@@ -1,35 +1,48 @@
 package com.crupp52.nachos.data.db
 
-import android.content.Context
+import android.app.Application
+import android.os.AsyncTask
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.crupp52.nachos.data.db.entity.Movie
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.crupp52.nachos.data.MovieInfoProvider
+import com.crupp52.nachos.data.model.Movie
 
-@Database(
-    entities = [Movie::class],
-    version = 5
-)
+@Database(entities = [Movie::class],    version = 1)
 abstract class MovieDatabase : RoomDatabase() {
+
     abstract fun movieDao(): MovieDao
 
-    init {
-        movieDao().upsert(Movie(10,"asd", "2018"))
-    }
-
     companion object {
-        @Volatile
+
+        private val lock = Any()
         private var INSTANCE: MovieDatabase? = null
 
-        fun getInstance(context: Context): MovieDatabase? {
-            if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder<MovieDatabase>(
-                    context.applicationContext,
-                    MovieDatabase::class.java,
-                    "movie_db"
-                ).build()
+        fun getInstance(application: Application): MovieDatabase {
+            synchronized(lock) {
+                if (INSTANCE == null) {
+                    INSTANCE =
+                        Room.databaseBuilder(application, MovieDatabase::class.java, "movie.db")
+                            .allowMainThreadQueries().addCallback(object : RoomDatabase.Callback() {
+                                override fun onCreate(db: SupportSQLiteDatabase) {
+                                    super.onCreate(db)
+                                    INSTANCE?.let {
+                                        prePopulate(it, MovieInfoProvider.movieList)
+                                    }
+                                }
+                            })
+                            .build()
+                }
+
+                return INSTANCE!!
             }
-            return INSTANCE
+        }
+
+        fun prePopulate(database: MovieDatabase, movieList: List<Movie>) {
+            for (movie in movieList) {
+                AsyncTask.execute { database.movieDao().insert(movie) }
+            }
         }
     }
 }

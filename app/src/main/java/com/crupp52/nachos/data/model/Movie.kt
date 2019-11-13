@@ -1,6 +1,5 @@
-package com.crupp52.nachos.data.db.entity
+package com.crupp52.nachos.data.model
 
-import androidx.room.Dao
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName

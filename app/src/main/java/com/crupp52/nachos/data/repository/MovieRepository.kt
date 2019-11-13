@@ -1,42 +1,37 @@
 package com.crupp52.nachos.data.repository
 
-import android.annotation.SuppressLint
-import android.content.Context
-import com.crupp52.nachos.data.api.TmdbApiService
-import com.crupp52.nachos.data.api.network.ConnectivityInterceptorImpl
+import android.app.Application
+import androidx.lifecycle.LiveData
 import com.crupp52.nachos.data.db.MovieDao
-import com.crupp52.nachos.data.api.network.MovieNetworkDataSource
-import com.crupp52.nachos.data.api.network.MovieNetworkDataSourceImpl
 import com.crupp52.nachos.data.db.MovieDatabase
+import com.crupp52.nachos.data.model.Movie
 
-class MovieRepository private constructor(
-    private val context: Context
-) {
+class MovieRepository(application: Application) {
 
-    val apiService = TmdbApiService(ConnectivityInterceptorImpl(context))
+    private val movieDao: MovieDao
 
-    private var movieDao: MovieDao = MovieDatabase.getInstance(context)!!.movieDao()
-    private var movieNetworkDataSource: MovieNetworkDataSource =
-        MovieNetworkDataSourceImpl(apiService)
-
-
-    fun getFavoutirtes() = movieDao.getAll()
-
-    fun getTrending() = movieNetworkDataSource.downloadedMovie
-
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        @Volatile
-        private var INSTANCE: MovieRepository? = null
-
-        fun getInstance(
-            context: Context
-        ) =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: MovieRepository(context.applicationContext).also {
-                    INSTANCE = it
-                }
-            }
+    init {
+        val movieDatabase = MovieDatabase.getInstance(application)
+        movieDao = movieDatabase.movieDao()
     }
 
+    fun getAll(): LiveData<List<Movie>> {
+        return movieDao.getAll()
+    }
+
+    fun insert(movie: Movie) {
+        movieDao.insert(movie)
+    }
+
+    fun delete(movie: Movie) {
+        movieDao.delete(movie)
+    }
+
+    fun find(id: Int): LiveData<Movie> {
+        return movieDao.find(id)
+    }
+
+    fun findByTitle(title: String): LiveData<List<Movie>> {
+        return movieDao.fundByTitle(title)
+    }
 }

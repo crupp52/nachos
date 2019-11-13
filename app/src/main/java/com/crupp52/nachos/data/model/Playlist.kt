@@ -1,4 +1,4 @@
-package com.crupp52.nachos.data.db.entity
+package com.crupp52.nachos.data.model
 
 data class Playlist(
     val name: String,

@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.crupp52.nachos.data.db.MovieDao
 import com.crupp52.nachos.data.db.MovieDatabase
-import com.crupp52.nachos.data.db.entity.Movie
+import com.crupp52.nachos.data.model.Movie
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private val selected: MutableLiveData<Movie> = MutableLiveData()

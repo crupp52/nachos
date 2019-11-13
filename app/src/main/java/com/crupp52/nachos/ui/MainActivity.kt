@@ -6,11 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.crupp52.nachos.R
 import com.crupp52.nachos.data.api.TmdbApiService
-import com.crupp52.nachos.data.db.MovieDatabase
 import com.crupp52.nachos.data.api.network.ConnectivityInterceptorImpl
 import com.crupp52.nachos.data.api.network.MovieNetworkDataSourceImpl
-import com.crupp52.nachos.data.db.entity.Movie
-import com.crupp52.nachos.data.repository.MovieRepository
 import com.crupp52.nachos.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers

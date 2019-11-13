@@ -1,6 +1,6 @@
 package com.crupp52.nachos.data.api.network.response
 
-import com.crupp52.nachos.data.db.entity.Movie
+import com.crupp52.nachos.data.model.Movie
 import com.google.gson.annotations.SerializedName
 
 data class MovieCollectionResponse(
