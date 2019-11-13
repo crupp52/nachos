@@ -5,43 +5,69 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.crupp52.nachos.R
-import com.crupp52.nachos.data.api.TmdbApiService
-import com.crupp52.nachos.data.api.network.ConnectivityInterceptorImpl
-import com.crupp52.nachos.data.api.network.MovieNetworkDataSourceImpl
-import com.crupp52.nachos.viewmodel.MovieViewModel
+import com.crupp52.nachos.ui.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import android.R
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.R
+import android.widget.Toolbar
+import com.crupp52.nachos.data.MovieInfoProvider.Companion.movieList
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.R
+import com.crupp52.nachos.data.model.Movie
+import com.crupp52.nachos.ui.list.MovieListAdapter
+
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var movieList: List<Movie>
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var mAdapter: MovieListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.crupp52.nachos.R.layout.activity_main)
 
-        val apiService = TmdbApiService(ConnectivityInterceptorImpl(this.baseContext!!))
-        val movieDataSource = MovieNetworkDataSourceImpl(apiService)
+        recyclerView = findViewById(com.crupp52.nachos.R.id.recycler_view)
+
+        mAdapter = MovieListAdapter()
+        val mLayoutManager = LinearLayoutManager(applicationContext)
+        recyclerView.layoutManager = mLayoutManager
+        recyclerView.itemAnimator = DefaultItemAnimator()
+        recyclerView.adapter = mAdapter
+//
+//        val apiService = TmdbApiService(ConnectivityInterceptorImpl(this.baseContext!!))
+//        val movieDataSource = MovieNetworkDataSourceImpl(apiService)
 
         //movieDataSource.fetchMovies().observe(this, Observer {
         //    textView.text = it.toString()
         //})
 
-        val viewmodel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        //val viewmodel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
 
         //viewmodel.addMovie(Movie(10, "Teszt", "2019"))
 
-        val stringBuilder = StringBuilder()
-        viewmodel.getMovies()?.observe(this, Observer { movies ->
-            movies.forEach { movie -> stringBuilder.append("${movie.title} (${movie.releaseDate})\n\n") }
-        })
+//        val viewmodel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+//
+//        val stringBuilder = StringBuilder()
+//        viewmodel.getMovieList().observe(this, Observer { movies ->
+//            movies.forEach { movie -> stringBuilder.append("${movie.title} (${movie.releaseDate})\n\n") }
+//        })
+//
+//        textView.text = stringBuilder.toString()
 
-        textView.text = stringBuilder.toString()
-
-        GlobalScope.launch(Dispatchers.Main) {
-            //val response = apiService.getMovie(551).await()
-            //textView.text = response.toString()
-
-            movieDataSource.fetchMovies()
-        }
+//        GlobalScope.launch(Dispatchers.Main) {
+//            //val response = apiService.getMovie(551).await()
+//            //textView.text = response.toString()
+//
+//            movieDataSource.fetchMovies()
+//        }
     }
 }
