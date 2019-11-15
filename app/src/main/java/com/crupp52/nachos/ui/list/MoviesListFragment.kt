@@ -4,24 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.crupp52.nachos.R
 import com.crupp52.nachos.data.model.Movie
-import com.crupp52.nachos.ui.viewmodel.MovieViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_movies_list.*
 
-class MoviesListFragment : Fragment(), MovieListAdapter.OnItemClickListener {
+class MoviesListFragment : Fragment(),
+    MovieListAdapter.OnItemClickListener,
+    SearchView.OnQueryTextListener,
+    SearchView.OnCloseListener {
 
-    private lateinit var viewModel: MovieViewModel
+    private lateinit var searchView: SearchView
+    private lateinit var viewModel: MovieListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setHasOptionsMenu(true)
-        viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MovieListViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -29,7 +31,7 @@ class MoviesListFragment : Fragment(), MovieListAdapter.OnItemClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.movie_list_row, container, false)
+        return inflater.inflate(R.layout.layout_list_item, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,17 +39,39 @@ class MoviesListFragment : Fragment(), MovieListAdapter.OnItemClickListener {
 
         viewModel.getMovieList().observe(this, Observer<List<Movie>> { movies ->
             movies?.let {
-                populateMoviesList(movies)
+                populateMovieList(movies)
             }
         })
+
+        addFab.setOnClickListener{
+            view.findNavController().navigate(R.id.action_moviesListFragment_to_addMovieFragment2)
+        }
     }
 
     override fun onItemClick(movie: Movie, itemView: View) {
-
+        val movieBundle = Bundle().apply {
+            putInt(getString(R.string.movie_id), movie.id)
+        }
+        view?.findNavController()?.navigate(R.id.action_moviesListFragment_to_movieDetailsActivity, movieBundle)
     }
 
-    private fun populateMoviesList(movieList: List<Movie>) {
-        recycler_view.adapter = MovieListAdapter(movieList, this)
+    private fun populateMovieList(peopleList: List<Movie>) {
+        movieRecyclerView.adapter = MovieListAdapter(peopleList, this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        viewModel.findMovie(query!!)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
+    }
+
+    override fun onClose(): Boolean {
+        viewModel.getAllMovie()
+        searchView.onActionViewCollapsed()
+        return true
     }
 
 }

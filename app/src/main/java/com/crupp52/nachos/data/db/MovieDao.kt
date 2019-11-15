@@ -16,7 +16,7 @@ interface MovieDao {
     @Delete
     fun delete(movie: Movie)
 
-    @Query("SELECT * FROM movie WHERE title LIKE '%' ||:title || '%'")
+    @Query("SELECT * FROM movie WHERE title LIKE '%' || :title || '%'")
     fun fundByTitle(title: String): LiveData<List<Movie>>
 
     @Query("SELECT * FROM movie WHERE id = :id")
