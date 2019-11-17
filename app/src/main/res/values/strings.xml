@@ -3,4 +3,5 @@
     <string name="movie_id" />
     <string name="save" />
     <string name="hint_contact" />
+    <string name="tile">Tile</string>
 </resources>

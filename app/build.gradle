@@ -28,11 +28,11 @@ android {
     buildTypes.each {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        def tmdbApiKey = properties.getProperty("tmdb_api_key", "")
-
-        it.buildConfigField 'String', "TMDB_API_KEY", tmdbApiKey
-
-        it.resValue 'string', "api_key", tmdbApiKey
+//        def tmdbApiKey = properties.getProperty("tmdb_api_key", "")
+//
+//        it.buildConfigField 'String', "TMDB_API_KEY", tmdbApiKey
+//
+//        it.resValue 'string', "api_key", tmdbApiKey
 
     }
 }
@@ -72,7 +72,8 @@ dependencies {
 
     implementation "com.android.support:support-compat:29.0.0"
     implementation "com.android.support:design:29.0.0"
-    implementation "com.android.support:cardview-v7:29.0.0"
+
+    implementation "androidx.cardview:cardview:1"
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
