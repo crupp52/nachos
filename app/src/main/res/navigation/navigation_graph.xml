@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/moviesListFragment"
         android:name="com.crupp52.nachos.ui.list.MoviesListFragment"
-        android:label="fragment_movies_list"
-        tools:layout="@layout/fragment_movies_list" >
+        android:label="Nachos"
+        tools:layout="@layout/fragment_movies_list">
         <action
             android:id="@+id/action_moviesListFragment_to_addMovieFragment2"
             app:destination="@id/addMovieFragment2" />
@@ -20,11 +20,11 @@
     <fragment
         android:id="@+id/addMovieFragment2"
         android:name="com.crupp52.nachos.ui.add.AddMovieFragment"
-        android:label="fragment_add_movie"
+        android:label="Search"
         tools:layout="@layout/fragment_add_movie" />
     <fragment
         android:id="@+id/movieDetailsFragment2"
         android:name="com.crupp52.nachos.ui.details.MovieDetailsFragment"
-        android:label="fragment_movie_details"
+        android:label="Details"
         tools:layout="@layout/fragment_movie_details" />
 </navigation>

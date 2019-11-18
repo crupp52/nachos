@@ -46,9 +46,9 @@ class MoviesListFragment : Fragment(),
             }
         })
 
-        /*addFab.setOnClickListener{
+        addFab.setOnClickListener{
             view.findNavController().navigate(R.id.action_moviesListFragment_to_addMovieFragment2)
-        }*/
+        }
     }
 
     override fun onItemClick(movie: Movie, itemView: View) {
