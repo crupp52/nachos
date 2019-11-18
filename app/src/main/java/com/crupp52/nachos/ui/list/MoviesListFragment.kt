@@ -43,16 +43,16 @@ class MoviesListFragment : Fragment(),
             }
         })
 
-        addFab.setOnClickListener{
+        /*addFab.setOnClickListener{
             view.findNavController().navigate(R.id.action_moviesListFragment_to_addMovieFragment2)
-        }
+        }*/
     }
 
     override fun onItemClick(movie: Movie, itemView: View) {
         val movieBundle = Bundle().apply {
             putInt(getString(R.string.movie_id), movie.id)
         }
-        view?.findNavController()?.navigate(R.id.action_moviesListFragment_to_movieDetailsActivity, movieBundle)
+        view?.findNavController()?.navigate(R.id.action_moviesListFragment_to_movieDetailsFragment2, movieBundle)
     }
 
     private fun populateMovieList(peopleList: List<Movie>) {

@@ -14,17 +14,17 @@
             android:id="@+id/action_moviesListFragment_to_addMovieFragment2"
             app:destination="@id/addMovieFragment2" />
         <action
-            android:id="@+id/action_moviesListFragment_to_movieDetailsActivity"
-            app:destination="@id/movieDetailsActivity" />
+            android:id="@+id/action_moviesListFragment_to_movieDetailsFragment2"
+            app:destination="@id/movieDetailsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/addMovieFragment2"
         android:name="com.crupp52.nachos.ui.add.AddMovieFragment"
         android:label="fragment_add_movie"
         tools:layout="@layout/fragment_add_movie" />
-    <activity
-        android:id="@+id/movieDetailsActivity"
-        android:name="com.crupp52.nachos.ui.details.MovieDetailsActivity"
-        android:label="activity_movie_details"
-        tools:layout="@layout/activity_movie_details" />
+    <fragment
+        android:id="@+id/movieDetailsFragment2"
+        android:name="com.crupp52.nachos.ui.details.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" />
 </navigation>

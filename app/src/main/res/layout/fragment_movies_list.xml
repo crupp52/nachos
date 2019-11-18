@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         tools:listitem="@layout/layout_list_item" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFab"
         android:layout_width="64dp"
         android:layout_height="wrap_content"

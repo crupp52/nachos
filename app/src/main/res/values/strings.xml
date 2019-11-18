@@ -4,4 +4,6 @@
     <string name="save" />
     <string name="hint_contact" />
     <string name="tile">Tile</string>
+    <string name="release_date">Release Date</string>
+    <string name="movie_title">Movie Title</string>
 </resources>
