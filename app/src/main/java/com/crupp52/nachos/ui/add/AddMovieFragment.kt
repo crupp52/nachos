@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.crupp52.nachos.R
-import com.crupp52.nachos.data.model.Movie
 import kotlinx.android.synthetic.main.fragment_add_movie.*
 
 class AddMovieFragment : Fragment() {
@@ -16,6 +15,14 @@ class AddMovieFragment : Fragment() {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         viewModel = ViewModelProviders.of(this).get(AddMovieViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        search_button.setOnClickListener{
+            viewModel.searchMovies(search_movie_title.text.toString())
+        }
     }
 
     override fun onCreateView(

@@ -3,6 +3,7 @@ package com.crupp52.nachos.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 @Entity
 data class Movie(
@@ -11,8 +12,7 @@ data class Movie(
     val id: Int,
     @SerializedName("title")
     val title: String,
-    @SerializedName("release_date")
-    val releaseDate: String
+    @Json(name = "release_date") val releaseDate: String
 
     /*@SerializedName("adult")
     val adult: Boolean,
@@ -30,8 +30,4 @@ data class Movie(
     val posterPath: String,
     @SerializedName("vote_average")
     val voteAverage: Double*/
-) {
-    override fun toString(): String {
-        return "$title (${releaseDate.substring(0, 4)})"
-    }
-}
+)

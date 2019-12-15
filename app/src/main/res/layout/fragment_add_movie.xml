@@ -22,32 +22,25 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputTitle"
+                android:id="@+id/movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/search_movie_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/movie_title"
-                    android:inputType="textPersonName"
+                    android:inputType="textNoSuggestions"
                     android:lines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputReleaseDate"
+            <Button
+                android:id="@+id/search_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/release_date"
-                    android:inputType="textPostalAddress"
-                    android:lines="1" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:text="@string/search" />
 
         </LinearLayout>
 
