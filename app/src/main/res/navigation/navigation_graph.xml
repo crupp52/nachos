@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/moviesListFragment">
+
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="com.crupp52.nachos.ui.list.MoviesListFragment"
+        android:label="Nachos"
+        tools:layout="@layout/fragment_movies_list">
+        <action
+            android:id="@+id/action_moviesListFragment_to_addMovieFragment2"
+            app:destination="@id/addMovieFragment2" />
+        <action
+            android:id="@+id/action_moviesListFragment_to_movieDetailsFragment2"
+            app:destination="@id/movieDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMovieFragment2"
+        android:name="com.crupp52.nachos.ui.add.AddMovieFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_add_movie" />
+    <fragment
+        android:id="@+id/movieDetailsFragment2"
+        android:name="com.crupp52.nachos.ui.details.MovieDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_movieDetailsFragment2_to_moviesListFragment"
+            app:destination="@id/moviesListFragment" />
+    </fragment>
+</navigation>
