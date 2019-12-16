@@ -2,7 +2,6 @@ package com.crupp52.nachos.ui.details
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -44,7 +43,7 @@ class MovieDetailsFragment : Fragment() {
 
 
         rating.setOnRatingBarChangeListener{_, rate, _ ->
-            //movie.value?.userRate = rate
+            //movie.value?.userRating = rate
             viewModel.saveMovie(movie.value!!)
         }
     }
@@ -71,6 +70,6 @@ class MovieDetailsFragment : Fragment() {
         textOriginalLanguage.text = movie?.originalLanguage
         textVoteAverage.text = movie?.voteAverage.toString()
         textPopularity.text = movie?.popularity.toString()
-        rating.rating = movie?.userRate!!
+        rating.rating = movie?.userRating!!
     }
 }

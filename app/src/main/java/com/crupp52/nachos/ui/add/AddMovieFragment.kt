@@ -27,9 +27,9 @@ class AddMovieFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*search_button.setOnClickListener {
+        search_button.setOnClickListener {
             viewModel.searchMovies(search_movie_title.text.toString())
-        }*/
+        }
 
         search_movie_title.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
