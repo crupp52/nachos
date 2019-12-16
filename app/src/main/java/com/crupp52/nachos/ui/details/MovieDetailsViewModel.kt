@@ -20,4 +20,12 @@ class MovieDetailsViewModel(application: Application) : AndroidViewModel(applica
 
         return movieDetails
     }
+
+    fun deleteMovie(movie: Movie){
+        movieRepository.delete(movie)
+    }
+
+    fun saveMovie(movie: Movie){
+        movieRepository.insert(movie)
+    }
 }

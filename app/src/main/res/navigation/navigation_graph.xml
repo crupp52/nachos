@@ -26,5 +26,9 @@
         android:id="@+id/movieDetailsFragment2"
         android:name="com.crupp52.nachos.ui.details.MovieDetailsFragment"
         android:label="Details"
-        tools:layout="@layout/fragment_movie_details" />
+        tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_movieDetailsFragment2_to_moviesListFragment"
+            app:destination="@id/moviesListFragment" />
+    </fragment>
 </navigation>

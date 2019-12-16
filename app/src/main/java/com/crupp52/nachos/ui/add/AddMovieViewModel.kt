@@ -17,10 +17,6 @@ import kotlinx.coroutines.launch
 class AddMovieViewModel(application: Application) : AndroidViewModel(application) {
     private val movieRepository = getApplication<NachosApplication>().getMovieRepository()
 
-    fun addMovie(movie: Movie) {
-        movieRepository.insert(movie)
-    }
-
     private val _response = MutableLiveData<List<Movie>>()
 
     val response: LiveData<List<Movie>>
@@ -48,4 +44,7 @@ class AddMovieViewModel(application: Application) : AndroidViewModel(application
         viewModelJob.cancel()
     }
 
+    fun addMovie(movie: Movie) {
+        movieRepository.insert(movie)
+    }
 }
