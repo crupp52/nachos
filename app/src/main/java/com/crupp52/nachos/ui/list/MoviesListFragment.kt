@@ -16,11 +16,8 @@ import com.crupp52.nachos.data.model.Movie
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 
 class MoviesListFragment : Fragment(),
-    MovieListAdapter.OnItemClickListener,
-    SearchView.OnQueryTextListener,
-    SearchView.OnCloseListener {
+    MovieListAdapter.OnItemClickListener {
 
-    private lateinit var searchView: SearchView
     private lateinit var viewModel: MovieListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,20 +58,4 @@ class MoviesListFragment : Fragment(),
     private fun populateMovieList(peopleList: List<Movie>) {
         movieRecyclerView.adapter = MovieListAdapter(peopleList, this)
     }
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        viewModel.findMovie(query!!)
-        return true
-    }
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-        return true
-    }
-
-    override fun onClose(): Boolean {
-        viewModel.getAllMovie()
-        searchView.onActionViewCollapsed()
-        return true
-    }
-
 }
