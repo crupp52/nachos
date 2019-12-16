@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.crupp52.nachos.data.MovieInfoProvider
 import com.crupp52.nachos.data.model.Movie
 
-@Database(entities = [Movie::class],    version = 2)
+@Database(entities = [Movie::class],    version = 1)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao

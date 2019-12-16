@@ -35,5 +35,5 @@ data class Movie(
     @Json(name = "vote_average")
     val voteAverage: Double,
 
-    var userRate: Float = 0.0f
+    var userRating: Float = 0.0f
 )
