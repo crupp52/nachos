@@ -33,7 +33,7 @@ data class Movie(
     val posterPath: String,
 
     @Json(name = "vote_average")
-    val voteAverage: Double
-){
+    val voteAverage: Double,
+
     var userRate: Float = 0.0f
-}
+)

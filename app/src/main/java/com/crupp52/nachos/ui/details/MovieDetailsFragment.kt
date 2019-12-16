@@ -43,10 +43,10 @@ class MovieDetailsFragment : Fragment() {
         }
 
 
-        /*rating.setOnRatingBarChangeListener{_, rate, _ ->
+        rating.setOnRatingBarChangeListener{_, rate, _ ->
             //movie.value?.userRate = rate
             viewModel.saveMovie(movie.value!!)
-        }*/
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -71,6 +71,6 @@ class MovieDetailsFragment : Fragment() {
         textOriginalLanguage.text = movie?.originalLanguage
         textVoteAverage.text = movie?.voteAverage.toString()
         textPopularity.text = movie?.popularity.toString()
-        //rating.rating = movie?.userRate!!
+        rating.rating = movie?.userRate!!
     }
 }
