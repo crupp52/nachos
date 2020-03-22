@@ -43,7 +43,9 @@ class MovieDetailsFragment : Fragment() {
 
 
         rating.setOnRatingBarChangeListener{_, rate, _ ->
-            //movie.value?.userRating = rate
+            movie.value?.userRating = rate
+
+            //TODO: Rating mechanism
             viewModel.saveMovie(movie.value!!)
         }
     }
@@ -63,13 +65,13 @@ class MovieDetailsFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun populateMovieDetails(movie: Movie?) {
-        textTitle.text = movie?.title
-        textReleaseDate.text = movie?.releaseDate
-        textAdult.text = movie?.adult.toString()
-        textOriginalLanguage.text = movie?.originalLanguage
-        textVoteAverage.text = movie?.voteAverage.toString()
-        textPopularity.text = movie?.popularity.toString()
-        rating.rating = movie?.userRating!!
+    private fun populateMovieDetails(movie: Movie) {
+        textTitle.text = movie.title
+        textReleaseDate.text = movie.releaseDate
+        textAdult.text = movie.adult.toString()
+        textOriginalLanguage.text = movie.originalLanguage
+        textVoteAverage.text = movie.voteAverage.toString()
+        textPopularity.text = movie.popularity.toString()
+        rating.rating = movie.userRating
     }
 }

@@ -34,7 +34,7 @@ class MovieListAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie, listener: OnItemClickListener) = with(itemView) {
             textViewTitle.text = movie.title
-            textViewReleaseDate.text = movie.releaseDate
+            textViewReleaseDate.text = movie.releaseDate.substring(0, 4)
 
             setOnClickListener {
                 listener.onItemClick(movie, it)
