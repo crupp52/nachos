@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_background"
     android:orientation="vertical"
-    android:padding="@dimen/default_padding"
     tools:context=".ui.add.AddMovieFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:background="@color/dark_background"
+        app:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:background="@color/dark_text2"
             android:orientation="vertical"
-            android:padding="@dimen/default_padding">
-
+            android:padding="10dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/movie_title"
@@ -37,11 +37,11 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/search_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/search" />
+            <!--            <Button-->
+            <!--                android:id="@+id/search_button"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="@string/search" />-->
 
         </LinearLayout>
 
@@ -52,6 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/layout_list_item"/>
+        tools:listitem="@layout/layout_list_item" />
 
 </LinearLayout>

@@ -8,21 +8,23 @@
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/cardview_light_background"
-    app:cardCornerRadius="@dimen/cardview_default_radius"
+    app:cardCornerRadius="4dp"
     app:cardElevation="@dimen/cardview_default_elevation">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@color/dark_background_card">
 
         <TextView
-            android:text="@string/tile"
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            android:text="@string/tile"
+            android:textSize="30sp"
+            android:textColor="@color/dark_text1"/>
 
         <TextView
             android:id="@+id/textViewReleaseDate"
@@ -31,7 +33,9 @@
             android:layout_below="@id/textViewTitle"
             android:gravity="center_vertical"
             android:lines="1"
-            android:text="@string/release_date"/>
+            android:text="@string/release_date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
+            android:textColor="@color/dark_text2"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

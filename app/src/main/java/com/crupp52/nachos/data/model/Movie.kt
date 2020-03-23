@@ -29,9 +29,6 @@ data class Movie(
 
     val popularity: Double,
 
-    @Json(name = "poster_path")
-    val posterPath: String,
-
     @Json(name = "vote_average")
     val voteAverage: Double,
 
