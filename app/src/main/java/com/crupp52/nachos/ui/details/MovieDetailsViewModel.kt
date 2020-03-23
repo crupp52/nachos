@@ -12,7 +12,7 @@ class MovieDetailsViewModel(application: Application) : AndroidViewModel(applica
     private val movieRepository = getApplication<NachosApplication>().getMovieRepository()
     private val movieId = MutableLiveData<Int>()
 
-    fun getMovieDeatils(id: Int): LiveData<Movie> {
+    fun getMovieDetails(id: Int): LiveData<Movie> {
         movieId.value = id
         val movieDetails = Transformations.switchMap<Int, Movie>(movieId) { id ->
             movieRepository.find(id)

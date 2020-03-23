@@ -35,7 +35,7 @@ class MovieDetailsFragment : Fragment() {
 
         val movieId = arguments?.getInt(getString(R.string.movie_id))
         movieId?.let {
-            movie = viewModel.getMovieDeatils(movieId)
+            movie = viewModel.getMovieDetails(movieId)
             movie.observe(this, Observer { movieDetails ->
                 populateMovieDetails(movieDetails)
             })
@@ -44,8 +44,6 @@ class MovieDetailsFragment : Fragment() {
 
         rating.setOnRatingBarChangeListener{_, rate, _ ->
             movie.value?.userRating = rate
-
-            //TODO: Rating mechanism
             viewModel.saveMovie(movie.value!!)
         }
     }
